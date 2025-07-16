@@ -11,6 +11,7 @@ const DashboardLayout = ({ children, activeMenu }) => {
     <div className="">
         <Navbar activeMenu={activeMenu} />
 
+        {user && ( 
             <div className="flex">
                 <div className="max-[1080px]:hidden">
                     <SideMenu activeMenu={activeMenu} />
@@ -18,6 +19,7 @@ const DashboardLayout = ({ children, activeMenu }) => {
 
              <div className="grow mx-5">{children}</div>
             </div>
+        )}
     </div>
    );
 };
