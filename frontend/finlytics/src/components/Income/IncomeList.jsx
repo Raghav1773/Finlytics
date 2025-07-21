@@ -2,6 +2,8 @@ import React from 'react'
 import TransactionInfoCard from '../Cards/TransactionInfoCard'
 import moment from 'moment'
 import { LuDownload } from 'react-icons/lu'
+import { addThousandsSeparator } from '../../utils/helper';
+
 
 const IncomeList = ({transactions, onDelete, onDownload}) => {
   return (
@@ -21,7 +23,7 @@ const IncomeList = ({transactions, onDelete, onDownload}) => {
                 title={income.source}
                 icon={income.icon}
                 date={moment(income.date).format("Do MMM YYYY")}
-                amount={income.amount}
+                amount={`₹ ${addThousandsSeparator(income.amount)}`}
                 type="income"
                 onDelete={() => onDelete(income._id)}
                 />
