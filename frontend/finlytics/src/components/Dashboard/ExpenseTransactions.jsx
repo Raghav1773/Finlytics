@@ -2,6 +2,7 @@ import React from 'react';
 import { LuArrowRight } from 'react-icons/lu';
 import TransactionInfoCard from '../Cards/TransactionInfoCard';
 import moment from 'moment';
+import { addThousandsSeparator } from '../../utils/helper';
 
 const ExpenseTransactions = ({ transactions, onSeeMore }) => {
   return (
@@ -21,7 +22,7 @@ const ExpenseTransactions = ({ transactions, onSeeMore }) => {
                   title={expense.category}
                   icon={expense.icon}
                   date={moment(expense.date).format("Do MMM YYYY")}
-                  amount={expense.amount}
+                  amount={addThousandsSeparator(expense.amount)}
                   type="expense"
                   hideDeleteBtn
                 />

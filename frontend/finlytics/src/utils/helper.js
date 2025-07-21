@@ -22,12 +22,21 @@ export const addThousandsSeparator = (num) => {
   if (num == null || isNaN(num)) return "";
 
   const [integerPart, fractionalPart] = num.toString().split(".");
-  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  
+  // Extract last 3 digits
+  const lastThree = integerPart.slice(-3);
+  const otherNumbers = integerPart.slice(0, -3);
+  
+  // Add commas for every 2 digits in the remaining part
+  const formattedOther = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+  
+  const formattedInteger = otherNumbers ? formattedOther + "," + lastThree : lastThree;
 
   return fractionalPart
-  ? `${formattedInteger}.${fractionalPart}`
-  : formattedInteger;
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
 };
+
 
 export const prepareExpenseBarChartData = (data = []) => {
   const chartData = data.map((item) => ({

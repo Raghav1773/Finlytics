@@ -2,6 +2,7 @@ import React from 'react'
 import { LuArrowRight } from 'react-icons/lu'
 import TransactionInfoCard from '../Cards/TransactionInfoCard'
 import moment from 'moment'
+import { addThousandsSeparator } from '../../utils/helper'
 
 const RecentIncome = ({transactions, onSeeMore}) => {
   return (
@@ -21,7 +22,7 @@ const RecentIncome = ({transactions, onSeeMore}) => {
                 title={item.source}
                 icon={item.icon}
                 date={moment(item.date).format("Do MMM YYYY")}
-                amount={item.amount}
+                amount={addThousandsSeparator(item.amount)}
                 type="income"
                 hideDeleteBtn
             />
